@@ -65,12 +65,12 @@ var Daycare = db.define('daycare', {
     },
     priceUnit: {
         type: Sequelize.ENUM,
-        valus: ['daily', 'weekly', 'monthly', 'annunaly'],
+        values: ['daily', 'weekly', 'monthly', 'annually'],
         allowNull: false,
     },
     style: {
         type: Sequelize.ENUM,
-        valus: ['In-Home', 'Daycare Center', 'Nanny'],
+        values: ['In-Home', 'Daycare Center', 'Nanny'],
         allowNull: false,
     }
 })

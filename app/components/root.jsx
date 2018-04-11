@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { HashRouter as Router, Route, Switch, Redirect, withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
-import Home from './Home'
-import Navbar from './navbar'
-import Footer from './footer'
-import { fetchCampuses, fetchStudents } from '../reducers';
+// import Home from './Home'
+// import Navbar from './navbar'
+// import Footer from './footer'
+// import { fetchCampuses, fetchStudents } from '../reducers';
 
 
 export class Root extends Component {
   componentDidMount() {
-    this.props.initialCampuses();
-    this.props.initialStudents();
+    // this.props.initialCampuses();
+    // this.props.initialStudents();
   }
 
 
@@ -19,15 +19,17 @@ export class Root extends Component {
     return (
       <Router>
         <div>
-          <Navbar />
+          {/*} <Navbar /> 
           <main>
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/campuses" component={Campuses} />
               <Redirect to="/" />
+    
             </Switch>
           </main>
           <Footer />
+          */}
         </div>
       </Router>
 

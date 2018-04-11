@@ -2,6 +2,12 @@ var Sequelize = require('sequelize');
 var db = require('../index')
 
 var UserDaycare = db.define('userDaycare', {
+    id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+        allowNull: false
+    },
     rating: {
         type: Sequelize.INTEGER,
         defaultValue: null,

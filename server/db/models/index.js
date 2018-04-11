@@ -11,10 +11,10 @@ const UserDaycare = require('./userDaycare')
 	// Exporting all models from here seems like a good idea!
 
 // This is also probably a good place for you to set up your associations
-DayImg.belongsTo(Daycare);
-Daycare.hasMany(DayImg);
-Daycare.belongsTo(DayImg, {as: 'mainPic'});
-DayImg.hasOne(Daycare, {as: 'mainPic'})
+DayImg.belongsTo(Daycare, {as: 'daycare', constraints: false, allowNull:true, defaultValue:null});
+Daycare.hasMany(DayImg, {as: 'daycare', constraints: false, allowNull:true, defaultValue:null});
+Daycare.belongsTo(DayImg, {as: 'mainPic', constraints: false, allowNull:true, defaultValue:null});
+DayImg.hasOne(Daycare, {as: 'mainPic', constraints: false, allowNull:true, defaultValue:null})
 
 User.belongsToMany(Daycare, {through: UserDaycare});
 Daycare.belongsToMany(User, {through: UserDaycare});
