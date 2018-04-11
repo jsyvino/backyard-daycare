@@ -3,6 +3,7 @@ const apiRouter = require('express').Router()
 const db = require('../db');
 const daycareRouter = require('./daycare');
 const userRouter = require('./user');
+const feedbackRouter = require('./feedback');
 
 // If you aren't getting to this object, but rather the index.html (something with a joke) your path is wrong.
 	// I know this because we automatically send index.html for all requests that don't make sense in our backend.
@@ -10,6 +11,7 @@ const userRouter = require('./user');
 	apiRouter.get('/', (req, res) => res.redirect('/daycares'))
 	apiRouter.use('/daycares', daycareRouter);
 	apiRouter.use('/users', userRouter);
+	apiRouter.use('/feedback', feedbackRouter);
 
 // You can put all routes in this file; HOWEVER, this file should almost be like a table of contents for the routers you create
 

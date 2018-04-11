@@ -8,7 +8,8 @@ const {
     User,
     UserDaycare,
     Daycare,
-    DayImg
+    DayImg,
+    Feedback
 } = require('./models');
 
 var data = {
@@ -84,6 +85,13 @@ var data = {
         { rating: "1", favorite: "FALSE", userNotes: "User puts their private notes here!", review: "User can put public review info here!", daycareId: "14", userId: "1" },
         { rating: "0", favorite: "FALSE", userNotes: "User puts their private notes here!", review: "User can put public review info here!", daycareId: "15", userId: "1" },
     ],
+    feedback: [
+        { subject: "test1", content: "This is some content about feedback message test1!!", category: "Question", userId: "1" },
+        { subject: "test2", content: "This is some content about feedback message test2!!", category: "Question", userId: "1" },
+        { subject: "test3", content: "This is some content about feedback message test3!!", category: "Question", userId: "2" },
+        { subject: "test4", content: "This is some content about feedback message test4!!", category: "Question", userId: "3" },
+        { subject: "test5", content: "This is some content about feedback message test5!!", category: "Question", userId: "4" },
+    ]
 };
 
 db.sync({ force: true })

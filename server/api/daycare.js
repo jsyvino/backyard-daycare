@@ -1,30 +1,29 @@
 var express = require('express');
 var router = express.Router();
-var { Daycare, DayImg, User, userDaycare} = require('../db/models');
+var { Daycare, DayImg, User, UserDaycare} = require('../db/models');
 var Promise = require('bluebird');
 module.exports = router;
 
 router.get('/', (req, res, next) => {
     Daycare.findAll({
-        // include: [{all: true}]
+        include: [{model: DayImg, as: 'dayPics'}, {
+            model: UserDaycare,
+        }]
     })
         .then(daycares => {
-            console.log(daycares)
             return res.send(daycares)
         })
         .catch(next)
 })
 
-router.get('/favorites', (req, res, next) => {
-    Daycare.findAll({
-        include: [{model: true}],
-        where: {
-
-        }
+router.get('/:daycareId', (req, res, next) => {
+    Daycare.findById(req.params.daycareId, {
+        include: [{model: DayImg, as: 'dayPics'}, {
+            model: UserDaycare,
+        }]
     })
-        .then(daycares => {
-            console.log(daycares)
-            return res.send(daycares)
+        .then(daycare => {
+            return res.send(daycare)
         })
         .catch(next)
 })
