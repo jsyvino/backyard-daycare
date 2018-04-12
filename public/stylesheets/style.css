@@ -1,388 +1,162 @@
-body {
-    font-family: 'PT Sans Narrow', sans-serif;
-}
 
-button:hover {
-    box-shadow:  5px 5px 5px
-}
-
-button:disabled {
-    background-color: rgb(95, 94, 94);
-    color: rgb(199, 199, 199);
-
-}
-
-button:active {
-    transform: translateY(2px);
-}
-
-/* FOOTER */
-footer {
-    font-family: 'Stylish', sans-serif;
-    display: flex;
-    justify-content: space-around;
-    background: rgb(71, 71, 71);
-    color: aliceblue;
-    flex-wrap: wrap
-}
-
-/* NAV BAR */
-nav button {
-    color: white;
-    text-decoration: none;
-    background-color: midnightblue;
-    font-size: 16px;
-    border-radius: 7px;
-    padding: 5px;
-    transition: transform box-shadow .1s ease-in;
-    font-variant: small-caps;
-}
-nav button:hover {
-    border: 2px white;
-    box-shadow:  5px 5px 5px rgb(96, 96, 133);
-}
-nav button:active {
-    border: 2px white;
-    box-shadow:  5px 5px 5px rgb(96, 96, 133);
-    transform: translateY(2px);
-}
-
-nav a {
-    align-self: center;
-    padding-left: 10px;
-    padding-right: 10px;
-}
 nav {
     align-self: center;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    background: rgb(108, 193, 221);
     flex-wrap: wrap;
-    font-family: 'Stylish', sans-serif;
-    border-radius: 0 0 15px 15px;
-    width: 100%;
+    background-color: rgb(26, 26, 26);
+    color: rgb(230, 228, 228);
     position: fixed;
     z-index: 2;
-}
-.links {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    padding: 20px 0;
+    width: 100%
 }
 
-
-/* MESSAGE */
-#message {
-    background: rgb(191, 191, 192);
-}
-.userMessage {
-    transform: translateY(75px);
-    color: rgb(160, 0, 0);
-    font-weight: bold;
-    font-variant: small-caps;
+.theBody {
     display: flex;
-    font-size: 20px;
-    align-items: center;
-    background-color: ivory;
-    border: 1px solid black;
-    border-radius: 5px;
-    height: 30px;
-    justify-content: space-around;
-    width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-}
-.userMessage button {
-    background-color: lightcoral; 
-    margin-left: 20px;
+    justify-content: space-between;
+    align-items: stretch;
+    padding: 80px;
 }
 
-/* HOME */
-#home {
-    padding: 80px 10px;
-    text-align: center;
-    background-image: url('../Images/spaceTravel.gif');
-    background-size: cover;
-    color: white;
-}
-.missionCont h3 {
-    margin: 10px 60px;
-}
-.missionCont h2 {
-    text-decoration: underline;
-}
-#welcome {
-    color: rgb(251, 255, 0);
-    text-shadow:
-    -1px -1px 0 #000,
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-    1px 1px 0 #000; 
-}
-.missionCont {
+#side {
+    height: 80vh;
     display: flex;
+    justify-content: start;
     flex-direction: column;
     align-items: center;
-    border-radius: 15px;
-}
-
-#home button {
-    color: midnightblue;
-    text-decoration: none;
-    background-color: lightblue;
-    font-size: 24px;
-    border-radius: 5px;
-    padding: 10px;
-    font-variant: small-caps;
-}
-#home button:hover {
-    border: 2px white;
-    background-color: midnightblue;
-    color: lightblue;
-    box-shadow:  5px 5px 5px rgb(96, 96, 133);
-}
-#home button:active {
-    border: 2px white;
-    box-shadow:  5px 5px 5px rgb(96, 96, 133);
-    transform: translateY(2px);
-}
-
-
-.page {
-    padding: 60px 10px;
-    background: rgb(191, 191, 192);
-}
-.pageTitle {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.pageTitle h1, .pageTitle button {
-    margin-left: 20px;
-    margin-right: 20px;
-}
-
-.pageTitle button {
-    color: midnightblue;
-    text-decoration: none;
-    background-color: lightblue;
-    font-size: 20px;
-    border-radius: 5px;
-    padding: 3px 8px;
-    font-family: 'Stylish', sans-serif;
-}
-
-.campusList, .studentList {
-    display: flex;
-    align-content: center;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-.campusItem, .studentItem {
-    border: 1px solid black;
-    margin: 5px;
-    background-color: rgb(232, 253, 250);
-    display: flex;
-    align-items: center;
+    border: 2px solid black;
     border-radius: 10px;
-}
-.itemInfo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 130px;
-    padding: 5px;
-}
-.itemInfo a {
-    font-size: 24px;
+    background-color: lavender;
+    padding: 15px 5px;
+    margin: 5px;
+    position: fixed;
+    z-index: 1;
+    transform: translateX(-70px);
+    padding-bottom: 40px;
 }
 
-.edDel {
+#foot {
+    position: fixed;
+    left:0px;
+    bottom:0px;
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    background-color: rgb(92, 91, 91);
+    align-items: flex-end;
+    color: rgb(230, 228, 228);
 }
 
-.edDel button, .edDelStu button {
-    font-variant: small-caps;
-    padding: 3px;
-    font-variant: small-caps;
-    font-family: 'Stylish', sans-serif;
-    font-size: 16px;
-    border-radius: 5px;
+#foot > p {
+    margin-bottom: 5px;
 }
 
-img  {
-    width: 200px;
-    height: auto;
-    padding: 5px;
-}
-#big-profile-pic {
-    width: 400px;
-    height: auto;
-    padding: 5px;
-}
-#big-profile-picStu {
-    transform: translateY(-80px);
-    width: 400px;
-    height: auto;
-    padding: 5px;
-}
-.editBut {
-    background-color: rgb(0, 95, 0);
-    color: rgb(193, 252, 193);
-    margin: 0 5px;
-}
-.delBut {
-    background-color: rgb(95, 0, 0);
-    color: rgb(253, 184, 184);
-    margin: 0 5px;
+main {
+    flex-grow: 2;
+    margin-left: 210px;
 }
 
-.detailView {
+.links {
     display: flex;
-    align-items: flex-start;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.edit form {
-    display: flex;
-    flex-direction: column;
-    width: 75%;
-    align-self: center;
-    margin: 0 auto;
-    font-size: 18px;
-}
-.formBorder {
-    display: flex;
-    flex-direction: column;
-    border-radius: 10px;
-    padding: 30px 10px;
-    margin: 0 10%;
-    color: white;
-    background-color: black;
-
-}
-.edit {
-    padding-top: 80px;
-    padding-bottom: 15px;
-    background: rgb(191, 191, 192);
-}
-.edit h2 {
-    text-align: center;
-    display: inline;
-    margin: 0 auto;
-}
-input, textarea {
-    font-family: 'PT Sans Narrow', sans-serif;
-    font-size: 18px;
+.links > a {
+    padding: 0 5px;
 }
 
-.subEdit {
-    color: midnightblue;
-    text-decoration: none;
-    background-color: lightblue;
-    border: 1px solid midnightblue;
-    font-size: 20px;
-    border-radius: 5px;
-    padding: 3px 8px;
-    margin-top: 10px;
-    font-family: 'Stylish', sans-serif;
+.detailViewSing:nth-child(even) {
+background-color: lavender;
 }
-
-.inputInvalid, input:invalid {
-    border: 2px solid red;
-  }
-
-  .singleView {
-      padding-top: 80px;
-      background: rgb(191, 191, 192);
-      text-align: center;
-      padding-bottom: 20px;
-  }
 
 .detailViewSing {
-    align-self: center;
     display: flex;
+    margin: 5px;
+    padding: 10px;
     align-items: center;
-    justify-content: space-around;
-    width: 70%;
-    margin: 0 auto;
-}
-.itemInfoSing {
-    display: flex;
-    flex-direction: column;
-    padding: 5px;
-    margin-left: 10px;
 }
 
-.addStud {
-    padding: 20px;
+#profile-pic {
+    width: 400px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.detailInfo {
     display: flex;
     flex-direction: column;
 }
-.studSel {
-    display: flex;
-    justify-content: center;
-    padding-top: 5px;
-    padding-bottom: 15px;
+.contact {
+    margin-bottom: 0;
+    padding: 2px 5px;
 }
-
-.studSel button {
-    margin-left: 10px;
-    color: midnightblue;
-    text-decoration: none;
-    background-color: lightblue;
-    border: 1px solid midnightblue;
-    font-size: 14px;
-    border-radius: 5px;
-    padding: 3px 8px;
-    font-family: 'Stylish', sans-serif;
-}
-
-select {
-    font-family: 'Stylish', sans-serif;
-    font-size: 16px;
-    width: 300px;
-    
-}
-option {
-    font-family: 'Stylish', sans-serif;
-    font-size: 16px;
-    text-align: center;
-}
-
-.delete {
-    text-align: center;
-    padding-top: 80px;
-    padding-bottom: 20px;
-    background: rgb(191, 191, 192);
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: center;
-}
-.delete a {
-    width: 200px;
-}
-.delete button {
-    font-variant: small-caps;
-    padding: 3px;
-    font-family: 'Stylish', sans-serif;
-    font-size: 16px;
-    border-radius: 5px;
-    width: 200px;
-}
-
-#studentCamp {
-    width: 80%;
-    margin: 0 auto;
-}
-
-.alert {
-    margin-top: 5px;
-    text-align: center;
-    background-color: yellow;
+#contact {
     border: 2px solid black;
+    border-radius: 10px;
 }
+
+.scroll {
+    opacity: 0.3;
+    background-color: aqua;
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    border-radius: 5px;
+    border: none;
+}
+    
+.scroll:hover {
+      opacity: 1;
+    }
+
+  
+  .arrow-up {
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -9px;
+    margin-left: -5px;
+  }
+
+  b {
+      font-weight: bold;
+      color: rgb(37, 37, 37);
+  }
+
+  .sameLine {
+      display: flex;
+      justify-content: space-around;
+  }
+
+  .title {
+      text-align: center
+  }
+
+  #star {
+      float: right;
+      font-size: 28px;
+      margin-bottom: 20px;
+  }
+ 
+.fav {
+      color: gold;
+  }
+
+  .notFav {
+    color: rgba(128, 128, 128);
+  }
+
+  #star:hover {
+    text-shadow: 2px 2px 2px #000000;
+  }
+
+  .nameStar {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+  }

@@ -1,22 +1,52 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
+import { fetchUser, setUser, getFavDaycares } from "../reducers/index"
+import { connect } from 'react-redux'
 
-export default function Navbar() {
+export function Navbar(props) {
 
   return (
     <nav>
       <Link to="/" >
         <button className="navLink" >Home</button>
       </Link>
-      <h1>Margaret Hamilton Interplanetary Academy of JavaScript</h1>
+      <h1>Daycare Database</h1>
       <div className="links">
-        <Link to="/campuses" >
-          <button className="navLink" >Campuses</button>
-        </Link>
-        <Link to="/students" >
-          <button className="navLink" >Students</button>
-        </Link>
+        <Link to="/daycares" >All Centers</Link>
+        <Link to="/daycares/favorites" > ❤ s </Link>
+        <Link to="#" >Map</Link>
       </div>
+      <Link to="/" >
+        <button
+          onClick={(event) => { props.userLogin(event, 1, props.user.name) }}
+          className="navLink" >{props.user.name ? 'Logout' : 'Login'}</button>
+      </Link>
     </nav>
   );
 }
+
+
+const mapState = (state, ownProps) => {
+  return {
+    user: state.currentUser,
+    favDaycares: state.favDaycares,
+  }
+}
+
+const mapDispatch = (dispatch, ownProps) => {
+  return {
+    userLogin: (event, userId, name) => {
+      if (name) {
+        event.preventDefault();
+        dispatch(setUser({}));
+        dispatch(getFavDaycares([]));
+      } else {
+        event.preventDefault();
+        dispatch(fetchUser(userId));
+      }
+    }
+  }
+}
+
+const connectedDaycares = connect(mapState, mapDispatch)(Navbar)
+export default connectedDaycares;

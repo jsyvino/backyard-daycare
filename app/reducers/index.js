@@ -1,15 +1,21 @@
-/* combineReducers is not currently used, but eventually should be for modular code :D */
+
 import { combineReducers } from 'redux'
-// import selectedStudent from './selected_student'
-// import newStudent from './new_student'
+import daycares from './daycares'
+import selectedDaycare from './selectedDaycare'
+import currentUser from './currentUser'
+import favDaycares from './favDaycares'
 
 
 const rootReducer = combineReducers({
-  // selectedStudent,
-  // newStudent
+  daycares,
+  selectedDaycare,
+  currentUser,
+  favDaycares
 })
 
-// export * from './campuses'
-// export * from './students'
+export * from './daycares'
+export * from './selectedDaycare'
+export * from './currentUser'
+export * from './favDaycares'
 
 export default rootReducer

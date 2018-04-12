@@ -4,8 +4,8 @@ export default function Footer () {
 
     return (
       <footer id="foot" >
-        <p>Margaret Hamilton Interplanetary Academy of JavaScript</p>
-        <p>Est 2018</p>
+        <p>The Daycare Database, a Backyard Project</p>
+        <p>2018</p>
       </footer>
     );
 }

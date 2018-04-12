@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Route, Switch, Redirect, withRouter } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect, withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
-// import Home from './Home'
-// import Navbar from './navbar'
-// import Footer from './footer'
+ import Daycares from './allDaycare'
+import Navbar from './navbar'
+import Sidebar from './sidebar'
+import Footer from './footer'
+import singleDaycare from './singleDaycare'
+import favDaycares from './favDaycares'
 // import { fetchCampuses, fetchStudents } from '../reducers';
 
 
@@ -19,17 +22,21 @@ export class Root extends Component {
     return (
       <Router>
         <div>
-          {/*} <Navbar /> 
-          <main>
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/campuses" component={Campuses} />
-              <Redirect to="/" />
-    
-            </Switch>
-          </main>
+          <Navbar />
+          <div className='theBody'>
+          <a name="top"></a>
+            <Sidebar />
+            <main>
+              <Switch>
+                <Route exact path="/" component={Daycares} />
+                <Route exact path="/daycares" component={Daycares} />
+                <Route exact path="/daycares/favorites" component={favDaycares} />
+                <Route path="/daycares/:daycareId" component={singleDaycare} />
+                <Redirect to="/" />
+              </Switch>
+            </main>
+          </div>
           <Footer />
-          */}
         </div>
       </Router>
 

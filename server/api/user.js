@@ -33,7 +33,8 @@ router.get('/:userId/favorites', (req, res, next) => {
                     userId: req.params.userId,
                     favorite: true
                 }
-            }
+            },
+            include:[{model: DayImg, as: 'dayPics'}]
         }]
     })
         .then(user => {
