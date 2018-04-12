@@ -42,3 +42,21 @@ router.get('/:userId/favorites', (req, res, next) => {
         })
         .catch(next)
 })
+
+router.put('/:userId/favorites/:daycareId', (req, res, next) => {
+    UserDaycare.findOrCreate({
+        where: {
+            userId: req.params.userId,
+            daycareId: req.params.daycareId
+        }
+    })
+    .spread((instance, created) => {
+        instance.update({
+            favorite: !instance.favorite
+        }).then(updated => {
+            res.send(updated)
+        })
+        .catch(next)
+    })
+    .catch(next)
+})

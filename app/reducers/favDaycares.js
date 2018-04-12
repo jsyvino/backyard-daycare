@@ -1,6 +1,6 @@
 import axios from 'axios';
 import chalk from 'chalk'
-import { fetchUser } from '../reducers/index'
+import { fetchDaycares } from '../reducers/index'
 
 const GET_FAV_DAYCARES = "GET_FAV_DAYCARES"
 const GET_NEW_FAV_DAYCARE = "GET_NEW_FAV_DAYCARE"
@@ -12,12 +12,6 @@ export function getFavDaycares(favDaycares) {
     }
 }
 
-export function getNewFavDaycare(newFavDaycare) {
-    return {
-        type: GET_NEW_FAV_DAYCARE,
-        newFavDaycare
-    }
-}
 
 export function fetchFavDaycares(userId) {
     return dispatch => {
@@ -30,14 +24,23 @@ export function fetchFavDaycares(userId) {
     }
 }
 
+export function toggleDaycare(userId, daycareId) {
+    return dispatch => {
+        return axios.put(`/api/users/${userId}/favorites/${daycareId}`)
+        .then(res => res.data)
+        .then((instance) => {
+            dispatch(fetchFavDaycares(userId))
+            dispatch(fetchDaycares())
+        })
+        .catch(error => console.log(chalk.red(error)))
+    }
+}
+
 
 export default function favDaycaresReducer(state = [], action) {
     switch (action.type) {
         case GET_FAV_DAYCARES:
           return action.favDaycares;
-  
-         case GET_NEW_FAV_DAYCARE:
-          return [...state, action.newFavDaycare];
     
         default:
           return state;

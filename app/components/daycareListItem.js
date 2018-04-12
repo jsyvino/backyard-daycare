@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-// import { fetchDaycare } from '../reducers/index'
+import { toggleDaycare } from '../reducers/index'
 import { Link, withRouter } from 'react-router-dom'
 
-export default function DaycareListItem(props) {
-    const daycare = props.daycare;
+export function DaycareListItem(props) {
+    const { daycare, currentUser, toggleFav } = props;
     const favorite = daycare.userDaycares ? daycare.userDaycares[0].favorite : daycare.userDaycare.favorite
     return (
         <div className="detailViewSing">
@@ -15,6 +15,7 @@ export default function DaycareListItem(props) {
                         <h4 className="title" >{daycare.name}</h4>
                     </Link>
                     <span
+                        onClick= {(event) => toggleFav(event, currentUser.id, daycare.id)}
                         id="star"
                         className={favorite ? 'fav' : 'notFav'} >
                         ★</span>
@@ -29,19 +30,20 @@ export default function DaycareListItem(props) {
     )
 }
 
-// const mapState = (state, ownProps) => {
-//     return {
-//         daycare: state.selectedDaycare,
-//     }
-// }
+const mapState = (state, ownProps) => {
+    return {
+        currentUser: state.currentUser
+    }
+}
 
-// const mapDispatch = (dispatch, ownProps) => {
-//     return {
-//         setDaycare: (daycareId) => {
-//             dispatch(fetchDaycare(daycareId))
-//         }
-//     }
-// }
+const mapDispatch = (dispatch, ownProps) => {
+    return {
+        toggleFav: (event, userId, daycareId) => {
+            event.preventDefault();
+            dispatch(toggleDaycare(userId, daycareId))
+        }
+    }
+}
 
-// const connectedDaycare = withRouter(connect(mapState, mapDispatch)(DaycareListItem))
-// export default connectedDaycare;
+const connectedDaycare = withRouter(connect(mapState, mapDispatch)(DaycareListItem))
+export default connectedDaycare;
