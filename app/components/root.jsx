@@ -1,37 +1,48 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect, withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
- import Daycares from './allDaycare'
+import { fetchDaycares, fetchFavDaycares, fetchLatLng } from '../reducers/index'
+import Daycares from './allDaycare'
 import Navbar from './navbar'
 import Sidebar from './sidebar'
 import Footer from './footer'
-import singleDaycare from './singleDaycare'
-import favDaycares from './favDaycares'
+import SingleDaycare from './singleDaycare'
+import FavDaycares from './favDaycares'
+import MapContainer from './mapContainer'
+import MapView from './map2'
+import mapContainer from './mapContainer';
 // import { fetchCampuses, fetchStudents } from '../reducers';
 
 
 export class Root extends Component {
+
   componentDidMount() {
-    // this.props.initialCampuses();
-    // this.props.initialStudents();
+    const user = this.props.currentUser
+    const daycares = this.props.daycares;
+    this.props.getDaycares();
+    if (user.name) this.props.getFavDaycares(user.id);
   }
 
+  convertToMarker (address) {
+
+  }
 
   render() {
-
+    let test = this;
     return (
       <Router>
         <div>
           <Navbar />
           <div className='theBody'>
-          <a name="top"></a>
+            <a name="top"></a>
             <Sidebar />
             <main>
               <Switch>
                 <Route exact path="/" component={Daycares} />
                 <Route exact path="/daycares" component={Daycares} />
-                <Route exact path="/daycares/favorites" component={favDaycares} />
-                <Route path="/daycares/:daycareId" component={singleDaycare} />
+                <Route exact path="/daycares/map" component={mapContainer} />
+                <Route exact path="/daycares/favorites" component={FavDaycares} />
+                <Route path="/daycares/:daycareId" component={SingleDaycare} />
                 <Redirect to="/" />
               </Switch>
             </main>
@@ -44,8 +55,23 @@ export class Root extends Component {
   }
 }
 
-const mapState = null;
+const mapState = (state, ownProps) => {
+  return {
+    daycares: state.daycares,
+    favDaycares: state.favDaycares,
+    currentUser: state.currentUser
+  }
+}
 
-const mapDispatch = null;
+const mapDispatch = (dispatch, ownProps) => {
+  return {
+    getDaycares: () => {
+      dispatch(fetchDaycares());
+    },
+    getFavDaycares: (userId) => {
+      dispatch(fetchFavDaycares(userId));
+    },
+  }
+}
 
 export default withRouter(connect(mapState, mapDispatch)(Root));

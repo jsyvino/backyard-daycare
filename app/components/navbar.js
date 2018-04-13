@@ -14,7 +14,7 @@ export function Navbar(props) {
       <div className="links">
         <Link to="/daycares" >All Centers</Link>
         <Link to="/daycares/favorites" > ❤ s </Link>
-        <Link to="#" >Map</Link>
+        <Link to="/daycares/map" >Map</Link>
       </div>
       <Link to="/" >
         <button

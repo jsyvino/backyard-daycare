@@ -11,7 +11,7 @@ export default function Sidebar() {
         <Link to="/daycares/favorites" >
           <button className="navLink" >Favorites</button>
         </Link>
-        <Link to="#" >
+        <Link to="/daycares/map" >
           <button className="navLink" >Map View</button>
         </Link>
         <Link to="#" >

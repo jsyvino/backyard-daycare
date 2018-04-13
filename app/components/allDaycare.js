@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { fetchDaycares, fetchFavDaycares } from '../reducers/index'
+import { fetchDaycares, fetchFavDaycares, getMarkers } from '../reducers/index'
 import { Link } from 'react-router-dom'
 import DaycareListItem from './daycareListItem'
 
@@ -10,7 +10,8 @@ export class Daycares extends Component {
     componentDidMount() {
         const user = this.props.currentUser
         this.props.getDaycares();
-        if (user.name) this.props.getFavDaycares(user.id) ;
+        if (user.name) this.props.getFavDaycares(user.id);
+        this.props.clearMarkers([]);
     }
     render() {
         window.scrollTo(0, 80)
@@ -57,6 +58,9 @@ const mapDispatch = (dispatch, ownProps) => {
         getFavDaycares: (userId) => {
             dispatch(fetchFavDaycares(userId));
         },
+        clearMarkers: (markers) => {
+            dispatch(getMarkers(markers))
+        }
     }
 }
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { fetchDaycare } from '../reducers/index'
+import { fetchDaycare, fetchLatLng } from '../reducers/index'
 import { Link, withRouter } from 'react-router-dom'
 
 export class SingleDaycare extends Component {
@@ -11,11 +11,16 @@ export class SingleDaycare extends Component {
     }
 
     render() {
-        const daycare = this.props.daycare;
+        const { daycare, getLatLng, currentUser} = this.props;
+        if (daycare.address){
+            let address = daycare.address.split(",").map((item) => item.trim()).join(" ");
+            getLatLng(address)
+        }
         window.scrollTo(0, 80)
         let favorite = false;
-        if (daycare.name) {
-            favorite = this.props.daycare.userDaycares[0].favorite
+        if (daycare.name &&  currentUser.name) {
+            favorite = daycare.userDaycares[0].favorite
+            console.log("HERE-----------", favorite)
         }
         //
         return (
@@ -58,6 +63,7 @@ export class SingleDaycare extends Component {
 const mapState = (state, ownProps) => {
     return {
         daycare: state.selectedDaycare,
+        currentUser: state.currentUser
     }
 }
 
@@ -65,6 +71,9 @@ const mapDispatch = (dispatch, ownProps) => {
     return {
         setDaycare: (daycareId) => {
             dispatch(fetchDaycare(daycareId))
+        },
+        getLatLng: (address) => {
+            dispatch(fetchLatLng(address))
         }
     }
 }
