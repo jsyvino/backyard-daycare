@@ -142,6 +142,11 @@ background-color: lavender;
       font-size: 28px;
       margin-bottom: 20px;
   }
+  #starSingle {
+    margin: 0 auto;
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
  
 .fav {
       color: gold;
@@ -159,6 +164,12 @@ background-color: lavender;
       display: flex;
       justify-content: space-around;
       align-items: center;
+  }
+
+  .picStar {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
   }
 
   #mapView {

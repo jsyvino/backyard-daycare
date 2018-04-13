@@ -1,24 +1,16 @@
 import axios from 'axios';
 import chalk from 'chalk'
 
-const SET_MARKERS = 'SET_MARKERS'
-const ADD_MARKER = 'ADD_MARKER'
+const SELECT_MARKER = "SELECT_MARKER"
 
-export function getMarkers(markers) {
+export function selectMarker(marker) {
     return {
-        type: SET_MARKERS,
-        markers
+        type: SELECT_MARKER,
+        marker
     }
 }
 
-export function addMarker(newMarker) {
-    return {
-        type: ADD_MARKER,
-        newMarker
-    }
-}
-
-export function fetchLatLng(address, daycareId, name) {
+export function fetchMarkerLatLng(address, daycareId, name) {
     let location = address.split(",").map((item) => item.trim()).join(" ");
     return dispatch => {
         return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?`, {
@@ -31,19 +23,16 @@ export function fetchLatLng(address, daycareId, name) {
                 let address = response.data.results[0].formatted_address;
                 let geoCode = response.data.results[0].geometry.location;
                 let coord = {name: name, daycareId: daycareId, lat: geoCode.lat, lng:  geoCode.lng}
-                dispatch(addMarker(coord))
+                dispatch(selectMarker(coord))
             })
             .catch(error => console.log(chalk.red(error)))
     }
 }
 
-export default function markersReducer(state = [], action) {
+export default function selectedDaycareReducer(state = {}, action) {
     switch (action.type) {
-        case SET_MARKERS:
-            return action.markers;
-
-        case ADD_MARKER:
-            return [...state, action.newMarker];
+        case SELECT_MARKER:
+            return action.marker;
 
         default:
             return state;

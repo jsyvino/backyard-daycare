@@ -7,7 +7,7 @@ export class DaycareListItem extends Component {
 
     componentDidMount() {
         const { daycare, getLatLng } = this.props;
-        getLatLng(daycare.address, daycare.id)
+        getLatLng(daycare.address, daycare.id, daycare.name)
     }
     render() {
         const { daycare, currentUser, toggleFav } = this.props;
@@ -54,8 +54,8 @@ const mapDispatch = (dispatch, ownProps) => {
             event.preventDefault();
             dispatch(toggleDaycare(userId, daycareId))
         },
-        getLatLng: (address, daycareId) => {
-            dispatch(fetchLatLng(address, daycareId))
+        getLatLng: (address, daycareId, name) => {
+            dispatch(fetchLatLng(address, daycareId, name))
         }
     }
 }

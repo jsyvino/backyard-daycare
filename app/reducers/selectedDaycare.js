@@ -1,5 +1,6 @@
 import axios from 'axios';
-import chalk from 'chalk'
+import chalk from 'chalk';
+import { fetchMarkerLatLng } from './index'
 
 const SET_DAYCARE = "SET_DAYCARE"
 
@@ -17,6 +18,7 @@ export function fetchDaycare(daycareId) {
             .then(res => res.data)
             .then(daycare => {
                 dispatch(setDaycare(daycare))
+                dispatch(fetchMarkerLatLng(daycare.address, daycare.id, daycare.name))
             })
             .catch(error => console.log(chalk.red(error)))
     }

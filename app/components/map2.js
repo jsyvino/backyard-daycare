@@ -7,7 +7,9 @@ class MapView extends Component {
         super(props)
         this.state = {
             map: null,
-            zoom: null
+            zoom: null,
+            isOpen: false,
+            showInfoIndex: null
         }
     }
 
@@ -33,6 +35,24 @@ class MapView extends Component {
         }
     }
 
+    handleToggleOpen = () => {
+
+        this.setState({
+            isOpen: true
+        });
+    }
+
+    handleToggleClose = () => {
+        this.setState({
+            isOpen: false,
+            showInfoIndex: null
+        });
+    }
+
+    showInfo(a){
+        this.setState({showInfoIndex: a })
+       }
+
     render() {
         const markers = this.props.markers || [];
         const { center, zoom } = this.props;
@@ -47,12 +67,26 @@ class MapView extends Component {
 
                 {
                     markers.map((marker) => {
-                        console.log(marker)
-                        return <Marker key={marker.daycareId} position={{ lat: marker.lat, lng: marker.lng }}
-                        // onRightClick={() => props.onMarkerRightClick(index)}
-                        />
+                        console.log("MARKER", marker)
+                        return (
+                            <Marker
+                                key={marker.daycareId}
+                                position={{ lat: marker.lat, lng: marker.lng }}
+                                label={marker.daycareId.toString()}
+                                onClick={() => this.showInfo(marker.daycareId)}
+                            // onRightClick={() => props.onMarkerRightClick(index)}
+                            >
+                                {
+                                    (this.state.showInfoIndex == marker.daycareId ) &&
+                                    <InfoWindow onCloseClick={this.handleToggleClose}>
+                                        <h6>{marker.name}</h6>
+                                    </InfoWindow>
+                                }
+                            </Marker>
+                        )
                     })
                 }
+
             </GoogleMap>
         )
     }
